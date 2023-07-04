@@ -7,13 +7,16 @@ class AppBlueButton extends StatelessWidget {
   final void Function()? onClick;
   final bool enabled;
   final EdgeInsets padding;
+  final String heroTag;
 
-  const AppBlueButton(
-      {Key? key,
-        required this.buttonText,
-        required this.onClick,
-        this.padding = const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 10.0), required this.enabled})
-      : super(key: key);
+  const AppBlueButton({
+    Key? key,
+    required this.buttonText,
+    required this.onClick,
+    this.padding = const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 10.0),
+    required this.enabled,
+    this.heroTag = 'MYBLUEBUTTON',
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ class AppBlueButton extends StatelessWidget {
         ));
 
     return Hero(
-      tag: "MYBLUEBUTTON",
+      tag: heroTag,
       child: Padding(
         padding: padding,
         child: SizedBox(
@@ -32,9 +35,11 @@ class AppBlueButton extends StatelessWidget {
           height: 55.h,
           child: ElevatedButton(
             style: regularButton,
-            onPressed: enabled ? () {
-              onClick?.call();
-            } : null,
+            onPressed: enabled
+                ? () {
+                    onClick?.call();
+                  }
+                : null,
             child: Text(
               buttonText,
               style: TextStyle(

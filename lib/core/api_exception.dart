@@ -1,14 +1,14 @@
 class ApiException implements Exception {
-  final int status;
+  final int code;
   final String message;
 
   const ApiException({
-    required this.status,
+    required this.code,
     required this.message,
   });
 
   ApiException.fromJson(Map<String, dynamic> json)
-      : status = json['status'] ?? 0,
+      : code = json['code'] ?? 0,
         message = json['message'] ?? 'unknown error occurred';
 
   @override
@@ -16,11 +16,11 @@ class ApiException implements Exception {
       identical(this, other) ||
       other is ApiException &&
           runtimeType == other.runtimeType &&
-          status == other.status &&
+          code == other.code &&
           message == other.message;
 
   @override
-  int get hashCode => status.hashCode ^ message.hashCode;
+  int get hashCode => code.hashCode ^ message.hashCode;
 
   @override
   String toString() {

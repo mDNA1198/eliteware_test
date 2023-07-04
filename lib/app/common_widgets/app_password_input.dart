@@ -2,27 +2,22 @@ import 'package:eliteware_test/app/app_extensions/build_context_extensions.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppRegularInput extends StatelessWidget {
-  final String hintText;
-  final String labelText;
-  final IconData prefixIcon;
+class AppPasswordInput extends StatelessWidget {
   final int maxLength;
-  final TextInputType inputType;
-
+  final bool obscureText;
   final void Function(String value) onChanged;
   final String? Function(String? value)? validator;
   final TextEditingController? textEditingController;
+  final void Function() onSuffixIconTapped;
 
-  const AppRegularInput({
+  const AppPasswordInput({
     super.key,
     required this.onChanged,
     this.validator,
     this.textEditingController,
-    required this.hintText,
-    required this.labelText,
-    required this.prefixIcon,
     required this.maxLength,
-    this.inputType = TextInputType.text,
+    required this.obscureText,
+    required this.onSuffixIconTapped,
   });
 
   @override
@@ -39,11 +34,12 @@ class AppRegularInput extends StatelessWidget {
       controller: textEditingController,
       validator: validator,
       onChanged: onChanged,
-      keyboardType: inputType,
+      obscureText: obscureText,
+      keyboardType: TextInputType.text,
       decoration: InputDecoration(
         counterText: '',
-        hintText: hintText,
-        labelText: labelText,
+        hintText: 'Enter Password',
+        labelText: 'Password',
         border: inputBorder,
         focusedBorder: inputBorder,
         disabledBorder: inputBorder,
@@ -51,8 +47,15 @@ class AppRegularInput extends StatelessWidget {
         focusedErrorBorder: inputBorder,
         errorBorder: inputBorder,
         prefixIcon: Icon(
-          prefixIcon,
+          Icons.password,
           color: context.colors.appBlueColor,
+        ),
+        suffixIcon: InkWell(
+          onTap: onSuffixIconTapped.call,
+          child: Icon(
+            obscureText ? Icons.visibility : Icons.visibility_off,
+            color: context.colors.appBlueColor,
+          ),
         ),
       ),
     );

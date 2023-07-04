@@ -11,9 +11,9 @@ class CommonAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: Hero(tag: 'AppBarLogo', child: Image.asset(context.images.appLogo)),
+      leading: Hero(tag: 'AppBarLogo', child: Align(child: Image.asset(context.images.appLogo, height: 35.h, width: 35.h,))),
       backgroundColor: context.colors.appWhiteColor,
-      elevation: 0,
+      elevation: 2.0,
       title: Hero(tag: 'AppBarTitle', child: Text(appBarTitle)),
       centerTitle: true,
       titleTextStyle: TextStyle(

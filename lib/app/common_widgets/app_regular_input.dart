@@ -1,13 +1,15 @@
 import 'package:eliteware_test/app/app_extensions/build_context_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppRegularInput extends StatelessWidget {
   final String hintText;
   final String labelText;
-  final IconData prefixIcon;
+  final IconData? prefixIcon;
   final int maxLength;
   final TextInputType inputType;
+  final List<TextInputFormatter>? inputFormatters;
 
   final void Function(String value) onChanged;
   final String? Function(String? value)? validator;
@@ -20,9 +22,10 @@ class AppRegularInput extends StatelessWidget {
     this.textEditingController,
     required this.hintText,
     required this.labelText,
-    required this.prefixIcon,
+    this.prefixIcon,
     required this.maxLength,
     this.inputType = TextInputType.text,
+    this.inputFormatters,
   });
 
   @override
@@ -40,6 +43,7 @@ class AppRegularInput extends StatelessWidget {
       validator: validator,
       onChanged: onChanged,
       keyboardType: inputType,
+      inputFormatters: inputFormatters,
       decoration: InputDecoration(
         counterText: '',
         hintText: hintText,

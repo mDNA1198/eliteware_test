@@ -1,12 +1,13 @@
+import 'package:eliteware_test/app/app_extensions/build_context_extensions.dart';
 import 'package:eliteware_test/app/common_widgets/app_blue_button.dart';
 import 'package:eliteware_test/app/common_widgets/app_password_input.dart';
 import 'package:eliteware_test/app/common_widgets/app_regular_input.dart';
 import 'package:eliteware_test/app/common_widgets/common_app_bar.dart';
+import 'package:eliteware_test/presentation/login/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:eliteware_test/app/app_extensions/build_context_extensions.dart';
-import 'package:eliteware_test/presentation/login/login_controller.dart';
 import 'package:logging/logging.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -50,6 +51,9 @@ class LoginPage extends GetView<LoginController> {
                   maxLength: 60,
                   textEditingController: controller.emailInputController,
                   inputType: TextInputType.emailAddress,
+                  inputFormatters: [
+                    FilteringTextInputFormatter(' ', allow: false)
+                  ],
                 ),
                 SizedBox(
                   height: 20.h,

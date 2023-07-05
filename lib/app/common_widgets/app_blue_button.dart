@@ -43,7 +43,7 @@ class AppBlueButton extends StatelessWidget {
             child: Text(
               buttonText,
               style: TextStyle(
-                fontSize: 18.sp,
+                fontSize: 16.sp,
                 color: context.colors.appWhiteColor,
                 fontWeight: FontWeight.w800,
               ),

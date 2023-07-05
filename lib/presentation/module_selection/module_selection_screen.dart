@@ -30,7 +30,7 @@ class ModuleSelectionScreen extends GetView<ModuleSelectionController> {
             AppBlueButton(
               buttonText: 'Timer Module',
               onClick: () {
-
+                Get.toNamed(AppRoutes.timeScreen);
               },
               enabled: true,
               heroTag: 'TimerBtnHero',

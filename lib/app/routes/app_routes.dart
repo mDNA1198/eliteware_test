@@ -2,8 +2,10 @@ import 'package:eliteware_test/presentation/login/login_binding.dart';
 import 'package:eliteware_test/presentation/login/login_page.dart';
 import 'package:eliteware_test/presentation/module_selection/module_selection_binding.dart';
 import 'package:eliteware_test/presentation/module_selection/module_selection_screen.dart';
-import 'package:get/get.dart';
 import 'package:eliteware_test/presentation/splash/splash_page.dart';
+import 'package:eliteware_test/presentation/timer/timer_binding.dart';
+import 'package:eliteware_test/presentation/timer/timer_page.dart';
+import 'package:get/get.dart';
 
 class AppRoutes {
   static String splashScreen = '/splash';
@@ -25,6 +27,11 @@ class AppRoutes {
       name: AppRoutes.loginScreen,
       binding: LoginBinding(),
       page: () => LoginPage(),
+    ),
+    GetPage(
+      name: AppRoutes.timeScreen,
+      binding: TimerBinding(),
+      page: () => TimerPage(),
     ),
   ];
 }
